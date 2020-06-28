@@ -1,0 +1,33 @@
+<p>products works!</p>
+
+<div *ngFor="let product of products">
+
+  <div class="card border-success mb-3 d-flex flex-column">
+
+    <div class="card-header">{{ product.title }}</div>
+    <div class="card-body">
+      <h4 class="card-title">{{ product.id }}</h4>
+
+<!--      <img style="width: 10rem;  display: block;" src="{{product.photo }}" alt="{{ product.title }}">-->
+
+      <h4 class="card-title">Type</h4>
+      <p class="card-text">{{product.type}}</p>
+      <h5 class="card-title">
+        Code Postal</h5>
+      <p class="card-text">{{ product.ZipCode }}</p>
+      <h5 class="card-title">prix</h5>
+      <p class="card-text">{{ product.price }}euros</p>
+    </div>
+    <div class="card-body">
+      <a  routerLink="{{ product.id }}" class="btn btn-success">Voir l'annonce</a>
+
+
+    </div>
+
+
+  </div>
+</div>
+<app-pagination [itemsPerPage]="products.length"
+                [currentPage]="currentPage"
+                [items]="totalItems"
+                (pageChanged)="handlePageChange($event)"></app-pagination>

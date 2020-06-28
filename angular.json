@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "aubergine"
+    }
+  },
+  "defaultProject": "aubergine",
+  "cli": {
+    "analytics": "95d4549b-250b-4a1a-9b63-e53b12956cf8"
+  }
 }
