@@ -23,11 +23,12 @@ import {ToastrModule} from "ngx-toastr";
 import { ProductEditComponent } from './products/product-edit.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from "./auth/token.interceptor";
+import { UserComponent } from './auth/user.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent ],
+  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -22,6 +22,7 @@ import {Router} from "@angular/router";
       </li>
       <li class="nav-item" *ngIf="isAuthenticated">
         <a class="nav-link" routerLink="/product/create" routerLinkActive="active">Déposer une annonce</a>
+
       </li>
 
     </ul>
@@ -50,6 +51,7 @@ import {Router} from "@angular/router";
         <button class="btn btn-warning" (click)="handleLogout()">
           Deconnexion
         </button>
+        <a class="btn btn-success" routerLink="/profile" routerLinkActive="active">Mon espace perso</a>
       </li>
 
     </ul>

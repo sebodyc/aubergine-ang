@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
 
         this.router.navigateByUrl('/products');
         console.log(this.auth.getToken());
-        console.log(JwtDecode(this.auth.getToken()));
+        console.log(JwtDecode(this.auth.getToken()).id);
 
       },
       (error) => {

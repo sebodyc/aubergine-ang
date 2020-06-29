@@ -20,8 +20,10 @@ import {Product} from "./product";
         <p class="card-text">{{ product.ZipCode }}</p>
         <h5 class="card-title">prix</h5>
         <p class="card-text">{{ product.price }}euros</p>
-        <p class="card-text"> vendeur {{ product.User }}</p>
+
+        <p class="card-text" > vendeur {{ product.User.name }}</p>
       </div>
+
     </div>
 
   `,

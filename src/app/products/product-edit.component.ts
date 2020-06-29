@@ -5,6 +5,9 @@ import {Product} from "./product";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../auth/user.service";
 import {ProductsService} from "./products.service";
+import {UiService} from "../ui/ui.service";
+import {map, switchMap} from "rxjs/operators";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-product-edit',
@@ -80,12 +83,47 @@ export class ProductEditComponent implements OnInit {
                private router: Router,
                private userService: UserService,
                private productsService: ProductsService,
+               private ui: UiService,
 
   ) { }
 
   ngOnInit(): void {
+  // this.route.data.subscribe((data)=>{
+  //   this.product= data.product as Product;
+  //   this.form.patchValue(this.product);
+  // })
 
+    this.route.paramMap
+      .pipe(
+        map((params)=> +params.get('id')),
+        switchMap((id)=>this.productsService.find(id))
+      ).subscribe((product)=>{
+        this.product= product;
+        this.form.patchValue(this.product);
+    });
 
   }
-handleSubmit(){}
+handleSubmit(){
+    this.submitted = true;
+    this.productsService.update({...this.form.value,id: this.product.id}).subscribe(
+      (product)=>{
+        this.ui.addFlash('success', 'le produit a bien été modifié');
+        this.router.navigateByUrl('/profile');
+      },
+      (error:HttpErrorResponse)=>{
+        if (error.status === 400 && error.error.violations) {
+          for (const violation of error.error.violations) {
+            const nomDuchamp = violation.propertyPath;
+            const message = violation.message;
+            this.ui.addFlash('danger', 'probleme dans les champs');
+            this.form.controls[nomDuchamp].setErrors({
+              invalid: message,
+            });
+          }
+          return;
+        }
+
+      }
+    );
+}
 }
