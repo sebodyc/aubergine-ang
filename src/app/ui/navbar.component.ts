@@ -20,7 +20,7 @@ import {Router} from "@angular/router";
       <li class="nav-item">
         <a class="nav-link" routerLink="/products" routerLinkActive="active">Toutes Les Annonces <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isAuthenticated">
         <a class="nav-link" routerLink="/product/create" routerLinkActive="active">Déposer une annonce</a>
       </li>
 

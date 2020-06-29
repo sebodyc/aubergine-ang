@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {AuthService} from "./auth.service";
 import {Router} from "@angular/router";
+import JwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -84,6 +85,9 @@ export class LoginComponent implements OnInit {
         this.error = false;
 
         this.router.navigateByUrl('/products');
+        console.log(this.auth.getToken());
+        console.log(JwtDecode(this.auth.getToken()));
+
       },
       (error) => {
         this.error = true;
@@ -91,7 +95,7 @@ export class LoginComponent implements OnInit {
     );
 
     console.log(this.form.value);
-    console.log(this.auth.getToken());
+
     this.error = false;
   }
 

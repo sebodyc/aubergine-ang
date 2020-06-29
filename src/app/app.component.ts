@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    this.toastr.success('hello');
+    this.toastr.success('Bienvenue sur notre site');
     this.ui.flash.subscribe((flash) => {
       this.flash = flash;
       window.setTimeout(() => (this.flash = null), 3000);

@@ -3,6 +3,7 @@ export interface Product {
   title: string;
   price: number;
   description: string;
+  User: string;
   type: string;
   ZipCode: number;
 }

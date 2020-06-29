@@ -20,9 +20,14 @@ import {RouterModule} from "@angular/router";
 import { RegistrerComponent } from './auth/registrer.component';
 import { PaginationComponent } from './ui/pagination.component';
 import {ToastrModule} from "ngx-toastr";
+import { ProductEditComponent } from './products/product-edit.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenInterceptor} from "./auth/token.interceptor";
+
+
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent ],
+  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,7 +40,9 @@ import {ToastrModule} from "ngx-toastr";
     ToastrModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

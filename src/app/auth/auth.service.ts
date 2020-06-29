@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import JwtDecode from 'jwt-decode';
 import { environment } from 'src/environments/environment'
-
-
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
 import {interval, Subject} from "rxjs";
@@ -13,7 +11,6 @@ import {interval, Subject} from "rxjs";
 export class AuthService {
 
   authChanged = new Subject<boolean>();
-
   constructor(private http:HttpClient) {
     interval(5000).subscribe(() => {
       this.authChanged.next(this.isAuthenticated());
@@ -43,14 +40,10 @@ export class AuthService {
       .pipe(
         tap((data: { token: string }) => {
           window.localStorage.setItem('token', data.token);
-          //prevenir tout le monde
           this.authChanged.next(true);
         })
       );
-
   }
-
-
 }
 
 
