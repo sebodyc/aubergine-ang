@@ -24,11 +24,13 @@ import { ProductEditComponent } from './products/product-edit.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from "./auth/token.interceptor";
 import { UserComponent } from './auth/user.component';
+import { ConversationComponent } from './conversation/conversation.component';
+import { MessageComponent } from './message/message.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent ],
+  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent, ConversationComponent, MessageComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

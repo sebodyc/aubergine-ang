@@ -9,6 +9,8 @@ import {RegisterComponent} from "./auth/register.component";
 import {RegistrerComponent} from "./auth/registrer.component";
 import {UserComponent} from "./auth/user.component";
 import {ProductEditComponent} from "./products/product-edit.component";
+import {ConversationComponent} from "./conversation/conversation.component";
+import {MessageComponent} from "./message/message.component";
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'registrer', component:RegistrerComponent },
   { path: 'login', component:LoginComponent },
   { path: 'profile', component:UserComponent },
+  { path: 'inbox', component:ConversationComponent},
+  { path: 'message', component: MessageComponent},
 ];
 
 @NgModule({
