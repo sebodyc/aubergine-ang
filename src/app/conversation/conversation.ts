@@ -9,5 +9,5 @@ export interface Conversation {
   createdAt: string;
   updatedAt: string;
   buyer: User;
-  messages: Message;
+  messages: Message[];
 }

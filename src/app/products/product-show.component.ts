@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ProductsService} from "./products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Product} from "./product";
+import {UiService} from "../ui/ui.service";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-product-show',
@@ -11,6 +13,7 @@ import {Product} from "./product";
 
       <div class="card-header">{{ product.title }}</div>
       <div class="card-body">
+        <img  *ngIf="product.productImage" src="http://localhost:3200/images/products/{{product.productImage}}" alt="{{ product.title }}">
         <h4 class="card-title">{{ product.id }}</h4>
         <p class="card-text"> description :{{ product.description}}</p>
         <h4 class="card-title">Type</h4>
@@ -23,7 +26,7 @@ import {Product} from "./product";
 
         <p class="card-text" > vendeur {{ product.User.name }}</p>
       </div>
-
+        <a class="btn btn-success" routerLink="/newMessage/{{ product.id }}" routerLinkActive="active" *ngIf="isAuthenticated">Envoyer un message</a>
     </div>
 
   `,
@@ -32,6 +35,7 @@ import {Product} from "./product";
 })
 export class ProductShowComponent implements OnInit {
   public product: Product ;
+  isAuthenticated= false;
 
   const // @ts-ignore
   id = +this.route.snapshot.paramMap.get('id');
@@ -39,9 +43,10 @@ export class ProductShowComponent implements OnInit {
 
 
 
-  constructor(private service : ProductsService, private route : ActivatedRoute, private  router : Router) { }
+  constructor(private service : ProductsService, private route : ActivatedRoute, private  router : Router , private auth:AuthService) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.auth.isAuthenticated();
     this.service.find(this.id).subscribe((product) => (this.product = product));
   }
 

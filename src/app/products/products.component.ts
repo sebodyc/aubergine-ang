@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit {
     const subscription = this.route.queryParamMap
       .pipe(
         map(params => params.has('page') ? +params.get('page') : 1),
+
         tap(page => this.currentPage = page),
         switchMap(page => this.productsService.findAll(page))
       )

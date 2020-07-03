@@ -15,9 +15,11 @@ export  interface PaginatedProduct {
   providedIn: 'root',
 })
 export class ProductsService {
+
   constructor(private http: HttpClient) {}
 
   findAll(page: number = 1) {
+
     return this.http
       .get<PaginatedProduct>(environment.apiUrl + '/products?page=' + page)
       .pipe(
@@ -51,5 +53,44 @@ export class ProductsService {
       product
     );
   }
+
+  findProductByRegion(page: number = 1 , region){
+
+    return this.http
+      .get<PaginatedProduct>(environment.apiUrl + '/products?page=' + page +'&region=' + region)
+      .pipe(
+        map((data) => {
+          const paginatedProduct: PaginatedProduct = {
+            items: data['hydra:member'] as Product[],
+            total: data['hydra:totalItems'],
+            page,
+          };
+          return paginatedProduct;
+
+        })
+      );
+  }
+
+
+  regions= [
+    "Auvergne-Rhône-Alpes",
+    "Bourgogne-Franche-Comté",
+    "Bretagne",
+    "Centre-Val-de-Loire",
+    "Corse",
+    "Grand-Est",
+    "Hauts-de-France",
+    "Ile-de-France",
+    "Normandie",
+    "Nouvelle-Aquitaine",
+    "Occitanie",
+    "Pays-de-la-Loire",
+    "Provence-Alpes-Côte d'Azur",
+  ];
+
+  types= [
+    "Troc",
+    "Vente",
+  ]
 
 }

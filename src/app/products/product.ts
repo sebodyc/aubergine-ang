@@ -8,5 +8,7 @@ export interface Product {
   User: User;
   type: string;
   ZipCode: number;
+  productImage: string;
+  region: string;
 }
 

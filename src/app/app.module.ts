@@ -26,11 +26,14 @@ import {TokenInterceptor} from "./auth/token.interceptor";
 import { UserComponent } from './auth/user.component';
 import { ConversationComponent } from './conversation/conversation.component';
 import { MessageComponent } from './message/message.component';
+import { NewMessageComponent } from './message/new-message.component';
+import { HomeComponent } from './home/home.component';
+import { ProductRegionComponent } from './products/product-region.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent, ConversationComponent, MessageComponent ],
+  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent, ConversationComponent, MessageComponent, NewMessageComponent, HomeComponent, ProductRegionComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

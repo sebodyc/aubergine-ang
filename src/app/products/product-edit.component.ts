@@ -12,7 +12,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 @Component({
   selector: 'app-product-edit',
   template: `
-    <h1>Creer une annonce</h1>
+    <h1>Modifier une annonce</h1>
 
     <form [formGroup]="form" (ngSubmit)="handleSubmit()" >
       <div class="form-group">
@@ -32,12 +32,11 @@ import {HttpErrorResponse} from "@angular/common/http";
         >
       </div>
       <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          formControlName="type"
-          placeholder="Type de transaction"
-        >
+        <select formControlName="type" >
+          <option *ngFor="let t of types" [ngValue]="t">
+            {{t}}
+          </option>
+        </select>
       </div>
       <div class="form-group">
         <input
@@ -54,7 +53,14 @@ import {HttpErrorResponse} from "@angular/common/http";
           formControlName="zipCode"
           placeholder="Code Postal"
         >
+      </div>
 
+        <div class="form-group">
+          <select formControlName="region">
+            <option *ngFor="let r of regions" [ngValue]="r">
+              {{r}}
+            </option>
+          </select>
       </div>
 
       <button type="submit" class="btn btn-success">envoyer</button>
@@ -64,12 +70,15 @@ import {HttpErrorResponse} from "@angular/common/http";
   ]
 })
 export class ProductEditComponent implements OnInit {
+  regions= this.productsService.regions;
+  types= this.productsService.types;
 
   form = new FormGroup({
     title: new FormControl(''),
     price: new FormControl(''),
     description: new FormControl(''),
-    type: new FormControl(''),
+    type: new FormControl(this.types[0]),
+    region: new FormControl(this.regions[0]),
     zipCode: new FormControl(''),
 
 
@@ -107,7 +116,7 @@ handleSubmit(){
     this.submitted = true;
     this.productsService.update({...this.form.value,id: this.product.id}).subscribe(
       (product)=>{
-        this.ui.addFlash('success', 'le produit a bien été modifié');
+        this.ui.addFlash('success', "l'annonce a bien été modifiée");
         this.router.navigateByUrl('/profile');
       },
       (error:HttpErrorResponse)=>{
@@ -115,7 +124,7 @@ handleSubmit(){
           for (const violation of error.error.violations) {
             const nomDuchamp = violation.propertyPath;
             const message = violation.message;
-            this.ui.addFlash('danger', 'probleme dans les champs');
+            this.ui.addFlash('danger', 'Probleme dans les champs');
             this.form.controls[nomDuchamp].setErrors({
               invalid: message,
             });

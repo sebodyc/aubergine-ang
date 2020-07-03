@@ -1,25 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {MessageService} from "./message.service";
-import {Conversation} from "../conversation/conversation";
 import {Message} from "./message";
-import {ActivatedRoute, Router, RouterModule} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
+import {MessageService} from "./message.service";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UiService} from "../ui/ui.service";
 
 @Component({
-  selector: 'app-message',
+  selector: 'app-new-message',
   template: `
-    <div  *ngFor="let m of messages ">
-      <tr>
-        <td>{{ m.createdAt }}</td>
-        <td>{{ m.content }}</td>
-        <td>{{ m.sender.name }}</td>
-      </tr>
-
-    </div>
-
-
-    <h1>Repondre</h1>
+    <h1>Creer un message</h1>
 
     <form [formGroup]="form" (ngSubmit)="handleSubmit()" >
       <div class="form-group">
@@ -32,35 +21,27 @@ import {UiService} from "../ui/ui.service";
       </div>
       <button type="submit" class="btn btn-success">envoyer</button>
     </form>
-
   `,
   styles: [
   ]
 })
-export class MessageComponent implements OnInit {
+export class NewMessageComponent implements OnInit {
   submitted = true;
   messages: Message []=[];
-  const // @ts-ignore
-  id = +this.route.snapshot.paramMap.get('id');
+
+  id: number;
 
   form = new FormGroup({
     content: new FormControl(''),
-    conversation: new FormControl("/api/conversations/" +this.id),
+    annonceId: new FormControl(''),
 
   });
-
-
 
   constructor(private service : MessageService, private router : Router , private route : ActivatedRoute,private ui:UiService) { }
 
   ngOnInit(): void {
-
-    // this.service
-    //   .findMessage()
-    //   .subscribe((message)=>(this.messages=message));
-
-    this.service.findMessagesInConversation(this.id)
-      .subscribe(message=>this.messages=message);
+    this.id= +this.route.snapshot.paramMap.get('id');
+    this.form.patchValue({"annonceId" : this.id})
   }
 
   handleSubmit(){

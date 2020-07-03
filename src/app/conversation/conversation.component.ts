@@ -8,17 +8,13 @@ import {User} from "../auth/user";
   selector: 'app-conversation',
   template: `
     <div  *ngFor="let c of conversations">
-      <h1>mes conversations</h1>
-      <h4>annonce n° {{  c.id }} : {{ c.product.title }} </h4>
+      <h1>Mes conversations</h1>
+      <h4>Annonce n° {{  c.id }} : {{ c.product.title }} </h4>
     <tr>
-      <td> nom de l'acheteur :{{ c.buyer.name }}</td>
-      <td> messages :{{ c.messages.content }}</td>
+      <td> Nom de l'acheteur :{{ c.buyer.name }}</td>
+      <td> Messages :{{ c.messages.content }}</td>
       <td>{{ c.messages.sender }}</td>
-
       </tr>
-
-
-
     </div>
 
   `,
