@@ -8,33 +8,21 @@ import {map, switchMap, tap} from "rxjs/operators";
 @Component({
   selector: 'app-product-region',
   template: `
-
-    <div *ngFor="let product of products">
-
-      <div class="card border-success mb-3 d-flex flex-column">
-
-        <div class="card-header">{{ product.title }}</div>
-        <div class="card-body">
-          <h4 class="card-title">{{ product.id }}</h4>
-
-          <!--      <img style="width: 10rem;  display: block;" src="{{product.photo }}" alt="{{ product.title }}">-->
-
-          <h4 class="card-title">Type</h4>
-          <p class="card-text">{{product.type}}</p>
-          <h5 class="card-title">
-            Code Postal</h5>
-          <p class="card-text">{{ product.ZipCode }}</p>
-          <h5 class="card-title">prix</h5>
-          <p class="card-text">{{ product.price }}euros</p>
+    <div class=" teub  "  >
+      <div class="container-fluid pb-3 pl-0">
+        <div class="d-flex align-items-stretch justify-content-around  flex-wrap">
+          <div class="card cardbase   col-sm-12 col-lg-2 col-md-6 p-3 m-2" style="width: 18rem;"  *ngFor="let product of products">
+            <img class="img-fluid" style="border-radius: 1em "  *ngIf="product.productImage" src="http://localhost:3200/images/products/{{product.productImage}}" alt="{{ product.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">{{ product.description |slice:0:20}} ...</p>
+              <p class="card-text">{{ product.ZipCode }}</p>
+              <a  routerLink="{{ product.id }}"  class="btn btn-primary">Voir l'annonce</a>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <a  routerLink="/products/{{ product.id }}" class="btn btn-success">Voir l'annonce</a>
-
-
-        </div>
-
-
       </div>
+
     </div>
     <app-pagination [itemsPerPage]="products.length"
                     [currentPage]="currentPage"
@@ -44,6 +32,22 @@ import {map, switchMap, tap} from "rxjs/operators";
 
   `,
   styles: [
+    `
+      .teub{
+        background-image: url("../../assets/images/young-tomato.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        margin: auto;
+        font-size: 1.2rem;
+        padding: 1rem;
+      }
+
+      .cardbase{
+        background-color: rgba(255,255,255,0.7);
+        border-radius: 1em ;
+      }
+    `
   ]
 })
 export class ProductRegionComponent implements OnInit {

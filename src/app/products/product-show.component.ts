@@ -9,28 +9,37 @@ import {AuthService} from "../auth/auth.service";
   selector: 'app-product-show',
   template: `
 
-    <div class="card border-success mb-3 d-flex flex-column" *ngIf="product">
-
-      <div class="card-header">{{ product.title }}</div>
-      <div class="card-body">
-        <img  *ngIf="product.productImage" src="http://localhost:3200/images/products/{{product.productImage}}" alt="{{ product.title }}">
-        <h4 class="card-title">{{ product.id }}</h4>
-        <p class="card-text"> description :{{ product.description}}</p>
-        <h4 class="card-title">Type</h4>
-        <p class="card-text">{{ product.type }}</p>
-        <h5 class="card-title">
-          Code Postal</h5>
-        <p class="card-text">{{ product.ZipCode }}</p>
-        <h5 class="card-title">prix</h5>
-        <p class="card-text">{{ product.price }}euros</p>
-
-        <p class="card-text" > vendeur {{ product.User.name }}</p>
+    <div class="container mt-4" *ngIf="product">
+      <div class="row pb-3 ">
+        <div class="col-auto col-sm-12 col-md-6 col-lg-6 userinfo mr-2 mb-3" style="border-radius: 2em "> <img style="border-radius: 1em " class="img-fluid p-3" *ngIf="product.productImage" src="http://localhost:3200/images/products/{{product.productImage}}" alt="{{ product.title }}">
+          <h2>{{ product.title }}</h2>
+          <hr />
+          <h6>Description : </h6>
+          <p class="card-text">{{ product.description}}</p>
+          <hr /><span class="badge badge-primary">Catégorie : {{ product.type }}</span>
+          <h4>Prix : {{product.price}}</h4>
+        </div>
+        <div class="col-sm-12 col-md-5 col-lg-5  text-center " >
+          <div class="row">
+            <div class="col userinfo p-3" style="border-radius: 2em " >
+              <h3>Vendeur {{product.User.firtsName }}.{{product.User.name |uppercase | slice:0:1}}</h3>
+              <hr />
+              <a class="btn btn-success" routerLink="/newMessage/{{ product.id }}" routerLinkActive="active" *ngIf="isAuthenticated">Envoyer un message</a>
+              <p *ngIf="!isAuthenticated"> Veuillez vous connecter pour contacter le vendeur </p>
+            </div>
+          </div>
+        </div>
       </div>
-        <a class="btn btn-success" routerLink="/newMessage/{{ product.id }}" routerLinkActive="active" *ngIf="isAuthenticated">Envoyer un message</a>
     </div>
+
 
   `,
   styles: [
+    `
+      .userinfo {
+        box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 3px -2px rgba(0,0,0,.04), 0 3px 4px 0 rgba(0,0,0,.14);
+      }
+    `
   ]
 })
 export class ProductShowComponent implements OnInit {

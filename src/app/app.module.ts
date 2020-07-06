@@ -29,11 +29,13 @@ import { MessageComponent } from './message/message.component';
 import { NewMessageComponent } from './message/new-message.component';
 import { HomeComponent } from './home/home.component';
 import { ProductRegionComponent } from './products/product-region.component';
+import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
+import { FooterComponent } from './ui/footer.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent, ConversationComponent, MessageComponent, NewMessageComponent, HomeComponent, ProductRegionComponent ],
+  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent, ConversationComponent, MessageComponent, NewMessageComponent, HomeComponent, ProductRegionComponent, FooterComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,6 +46,12 @@ import { ProductRegionComponent } from './products/product-region.component';
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.circleSwish,
+      backdropBackgroundColour: 'rgba(0,0,0,0.0)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#1B1224',
+    }),
 
   ],
   providers: [

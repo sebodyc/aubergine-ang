@@ -63,13 +63,20 @@ import {HttpErrorResponse} from "@angular/common/http";
           </select>
       </div>
 
+
       <button type="submit" class="btn btn-success">envoyer</button>
     </form>
+    <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+      </div>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
   `,
   styles: [
   ]
 })
 export class ProductEditComponent implements OnInit {
+  public loading = false;
   regions= this.productsService.regions;
   types= this.productsService.types;
 
@@ -113,9 +120,11 @@ export class ProductEditComponent implements OnInit {
 
   }
 handleSubmit(){
+    this.loading = true;
     this.submitted = true;
     this.productsService.update({...this.form.value,id: this.product.id}).subscribe(
       (product)=>{
+        this.loading = false;
         this.ui.addFlash('success', "l'annonce a bien été modifiée");
         this.router.navigateByUrl('/profile');
       },

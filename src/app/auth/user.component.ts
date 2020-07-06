@@ -64,7 +64,7 @@ conversations: Conversation []=[];
     const id =JwtDecode(this.auth.getToken()).id;
   this.userService.find(id).subscribe((user) => (this.user = user));
 
- const idd =this.user.id
+
 
     this.service
       .findConversation()

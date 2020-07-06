@@ -83,13 +83,20 @@ import {ToastrService} from "ngx-toastr";
 
       </div>
 
+
       <button type="submit" class="btn btn-success">envoyer</button>
     </form>
+   <ng-template #customLoadingTemplate>
+     <div class="custom-class">
+     </div>
+   </ng-template>
+   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
   `,
   styles: [
   ]
 })
 export class ProductCreateComponent implements OnInit {
+  public loading = false;
  regions= this.service.regions;
  types= this.service.types;
   @ViewChild('fileInput')
@@ -123,8 +130,8 @@ export class ProductCreateComponent implements OnInit {
 
 
   handleSubmit(){
-
-
+    this.submitted=true;
+    this.loading = true;
     const data = new FormData();
     data.append('title',this.form.value.title);
     data.append('price',this.form.value.price);
@@ -137,6 +144,7 @@ export class ProductCreateComponent implements OnInit {
     this.http.post(environment.apiUrl +'/products',data).subscribe(()=>{
       this.toastr.success("Félicitation l'annonce est créée");
       this.router.navigateByUrl('/profile');
+      this.loading = false;
     });
 
 

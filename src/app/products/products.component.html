@@ -1,33 +1,23 @@
-<p>products works!</p>
 
-<div *ngFor="let product of products">
-
-  <div class="card border-success mb-3 d-flex flex-column">
-
-    <div class="card-header">{{ product.title }}</div>
-    <div class="card-body">
-      <h4 class="card-title">{{ product.id }}</h4>
-
-<!--      <img style="width: 10rem;  display: block;" src="{{product.photo }}" alt="{{ product.title }}">-->
-
-      <h4 class="card-title">Type</h4>
-      <p class="card-text">{{product.type}}</p>
-      <h5 class="card-title">
-        Code Postal</h5>
-      <p class="card-text">{{ product.ZipCode }}</p>
-      <h5 class="card-title">prix</h5>
-      <p class="card-text">{{ product.price }}euros</p>
+<div class=" teub  "  >
+<div class="container-fluid pb-3 pl-0">
+  <div class="d-flex align-items-stretch justify-content-around  flex-wrap">
+      <div class="card cardbase   col-sm-12 col-lg-2 col-md-6 p-3 m-2" style="width: 18rem;"  *ngFor="let product of products">
+            <img class="img-fluid" style="border-radius: 1em "  *ngIf="product.productImage" src="http://localhost:3200/images/products/{{product.productImage}}" alt="{{ product.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">{{ product.description |slice:0:20}} ...</p>
+              <p class="card-text">{{ product.ZipCode }}</p>
+              <a  routerLink="{{ product.id }}"  class="btn btn-primary">Voir l'annonce</a>
+            </div>
+          </div>
     </div>
-    <div class="card-body">
-      <a  routerLink="{{ product.id }}" class="btn btn-success">Voir l'annonce</a>
-
-
-    </div>
-
+  </div>
 
   </div>
-</div>
+
 <app-pagination [itemsPerPage]="products.length"
                 [currentPage]="currentPage"
                 [items]="totalItems"
-                (pageChanged)="handlePageChange($event)"></app-pagination>
+                (pageChanged)="handlePageChange($event)"
+                class="fixed-bottom bg-light"></app-pagination>

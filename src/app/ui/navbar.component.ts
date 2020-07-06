@@ -5,8 +5,10 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-navbar',
   template: `
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="/">L'Aubergine</a>
+
+
+ <nav class="navbar navbar-expand-lg navbar-light   fixed-top  bg-light ">
+  <a class="navbar-brand" routerLink="/">La courgette</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -61,6 +63,9 @@ import {Router} from "@angular/router";
 
   `,
   styles: [
+    `
+
+    `
   ]
 })
 export class NavbarComponent implements OnInit {
