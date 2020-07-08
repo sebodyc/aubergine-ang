@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'login', component:LoginComponent },
   { path: 'profile', component:UserComponent },
   { path: 'inbox', component:ConversationComponent},
-  { path: 'profile/message/:id', component: MessageComponent, canDeactivate: [FormGuard]},
+  { path: 'profile/message/:id/:pId', component: MessageComponent, canDeactivate: [FormGuard]},
   { path: 'newMessage/:id', component: NewMessageComponent, canDeactivate: [FormGuard]},
 ];
 

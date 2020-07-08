@@ -15,22 +15,23 @@ import JwtDecode from 'jwt-decode';
 
 
     <div class="container-fluid">
-      <div class="row no-gutter">
-        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-        <div class="col-md-8 col-lg-6">
+      <div class="backpics">
+
           <div class="login d-flex align-items-center py-5">
             <div class="container">
               <div class="row">
-                <div class="col-md-9 col-lg-8 mx-auto">
-                  <img   src="../../assets/images/courgettep.png" alt="">
+                <div class="col-md-9 col-lg-4 m-auto " >
+                  <div class="texthome text-center">
+                    <img class="" src="../../assets/images/courgettep.png" alt="">
+
                   <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-                    <div class="form-label-group">
+                    <div class="form-label-group m-3">
                       <input
                         id="inputEmail"
                         class="form-control"
                         [class.is-invalid]="form.controls['username'].invalid"
                         type="email"
-                        placeholder="adresse email de connexion"
+                        placeholder="adresse email "
                         formControlName="username"
                         required autofocus
                       />
@@ -48,7 +49,7 @@ import JwtDecode from 'jwt-decode';
                       </p>
                     </div>
 
-                    <div class="form-label-group">
+                    <div class="form-label-group m-3">
                       <input
                         class="form-control"
                         [class.is-invalid]="form.controls['password'].invalid"
@@ -66,27 +67,29 @@ import JwtDecode from 'jwt-decode';
                     </div>
                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Se connecter</button>
                   </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
 
 
 
-    <ng-template #customLoadingTemplate>
-      <div class="custom-class">
-      </div>
-    </ng-template>
-    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+
+
 
 
     <div class="alert alert-danger" *ngIf="error">
       Le compte utilsateur demandé est introuvable
     </div>
+
+      <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+        </div>
+      </ng-template>
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 
 
 
@@ -94,8 +97,22 @@ import JwtDecode from 'jwt-decode';
   `,
   styles: [
     `
+      .backpics {
+        background-image: url("../../assets/images/a.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: auto;
+        font-size: 1.2rem;
 
+      }
 
+      .texthome {
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: black;
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+      }
 
 
     `
@@ -116,6 +133,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   handleSubmit() {

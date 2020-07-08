@@ -31,11 +31,13 @@ import { HomeComponent } from './home/home.component';
 import { ProductRegionComponent } from './products/product-region.component';
 import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
 import { FooterComponent } from './ui/footer.component';
+import { ProductZipComponent } from './products/product-zip.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent, ConversationComponent, MessageComponent, NewMessageComponent, HomeComponent, ProductRegionComponent, FooterComponent ],
+  declarations: [AppComponent, NavbarComponent, ProductsComponent, ProductShowComponent, ProductCreateComponent, LoginComponent, RegisterComponent, RegistrerComponent, PaginationComponent, ProductEditComponent, UserComponent, ConversationComponent, MessageComponent, NewMessageComponent, HomeComponent, ProductRegionComponent, FooterComponent, ProductZipComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,6 +48,7 @@ import { FooterComponent } from './ui/footer.component';
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    SweetAlert2Module.forRoot(),
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.circleSwish,
       backdropBackgroundColour: 'rgba(0,0,0,0.0)',

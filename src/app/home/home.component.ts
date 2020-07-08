@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-home',
   template: `
-    <div class=" teub  "  >
+    <div class="backpics"  >
 
-    <div class="container row p-0  mb-5 "  >
+    <div class=" row m-3 "  >
 
-      <div class="col-lg-7 col-sm-12 texthome ">
-        <h1>L'Aubergine </h1>
+      <div class="col-lg-7 col-md-6 col-sm-12 texthome ">
+        <h1>La Courgette </h1>
         <H4> Plus qu'un Concept un mode de vie </H4>
         <p>Mettre en relation des jardiniers, des éleveurs amateur ,en clair des amateurs qui pourraient s'échanger ou meme vendre leur surplus de production. </p>
         <h5>Pourquoi ?</h5>
@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
         <p>Car lui a des tomates et moi des poules , ou meme vos deschets de tontes pourquoi ne pas les echanger olutot que d'aller les jeter a la descheterie ils feraient le bonheur des poules de votre voisin</p>
       </div>
 
-      <div class="col-lg-4 col-sm-12 m-auto ">
+      <div class="col-lg-4 col-md-6 col-sm-12 m-auto ">
         <div class="map mr-0 m-auto" >
           <svg viewBox="0 0 650 600" xmlns="http://www.w3.org/2000/svg" xmlns:amcharts="http://amcharts.com/ammap"
                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
@@ -56,31 +56,6 @@ import { Component, OnInit } from '@angular/core';
           </svg>
         </div>
       </div>
-
-    </div>
-
-    <div class="features-clean">
-      <div class="container">
-        <div class="intro">
-          <h2 class="text-center">Features</h2>
-          <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
-        </div>
-        <div class="row features">
-
-          <div class="col-sm-6 col-lg-4 item"><i class="fa fa-leaf icon"></i>
-            <h3 class="name">Organic</h3>
-            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 item"><i class="fa fa-plane icon"></i>
-            <h3 class="name">Fast</h3>
-            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-          </div>
-          <div class="col-sm-6 col-lg-4 item"><i class="fa fa-phone icon"></i>
-            <h3 class="name">Mobile-first</h3>
-            <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-          </div>
-        </div>
-      </div>
     </div>
     </div>
 
@@ -88,11 +63,12 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [
     `
-      .map{
+      .map {
 
       }
+
       .land {
-        fill: #3E354D;
+        fill: #006600;
         fill-opacity: 1;
         stroke: #82796A;
         stroke-opacity: 1;
@@ -101,25 +77,25 @@ import { Component, OnInit } from '@angular/core';
 
       .land:hover {
         transition-delay: 150ms;
-        fill: #646B5C;
+        fill: #660033;
         stroke: #0E0D0B;
       }
 
       .features-clean {
         color: #313437;
-        background-color: rgba(255,255,255,0.4);
+        background-color: rgb(255, 255, 255);
         color: rgba(90, 212, 165, 0.6);
         padding-bottom: 30px;
       }
 
       .features-clean {
         color: #313437;
-        background-color: rgba(255,255,255,0.4);
+        background-color: rgba(255, 255, 255, 0.4);
         color: rgba(90, 212, 165, 0.6);
         padding-bottom: 30px;
       }
 
-      @media (max-width:767px) {
+      @media (max-width: 767px) {
         .features-clean {
           padding-bottom: 10px;
         }
@@ -136,7 +112,7 @@ import { Component, OnInit } from '@angular/core';
         color: inherit;
       }
 
-      @media (max-width:767px) {
+      @media (max-width: 767px) {
         .features-clean h2 {
           margin-bottom: 25px;
           padding-top: 25px;
@@ -150,7 +126,7 @@ import { Component, OnInit } from '@angular/core';
         margin: 0 auto 60px;
       }
 
-      @media (max-width:767px) {
+      @media (max-width: 767px) {
         .features-clean .intro {
           margin-bottom: 40px;
         }
@@ -162,7 +138,7 @@ import { Component, OnInit } from '@angular/core';
         margin-bottom: 40px;
       }
 
-      @media (max-width:767px) {
+      @media (max-width: 767px) {
         .features-clean .item {
           min-height: 0;
         }
@@ -188,7 +164,7 @@ import { Component, OnInit } from '@angular/core';
         margin-left: -65px;
       }
 
-      .teub{
+      .backpics {
         background-image: url("../../assets/images/a.jpg");
         background-size: cover;
         background-repeat: no-repeat;
@@ -198,10 +174,12 @@ import { Component, OnInit } from '@angular/core';
         padding: 1rem;
       }
 
-      .texthome{
+      .texthome {
         margin: auto;
-        background-color: rgba(255,255,255,0.4);
+        background-color: rgba(255, 255, 255, 0.8);
         color: black;
+        border-radius: 1rem;
+        padding: 3rem 2rem;
       }
 
     `

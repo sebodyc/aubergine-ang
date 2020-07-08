@@ -5,6 +5,7 @@ import {MessageComponent} from "../../message/message.component";
 import {NewMessageComponent} from "../../message/new-message.component";
 import {ProductEditComponent} from "../../products/product-edit.component";
 import {ProductCreateComponent} from "../../products/product-create.component";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,8 @@ export class FormGuard implements  CanDeactivate<unknown> {
     if (component.submitted) {
       return true;
     }
+
+
 
     return window.confirm(
       "Vous n'avez pas fini de renseigner le formulaire  voulez vous vraiment partir ??"

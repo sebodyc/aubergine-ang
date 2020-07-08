@@ -71,6 +71,25 @@ export class ProductsService {
       );
   }
 
+  findProductByZipCode(page: number = 1 , zipCode){
+
+    return this.http
+      .get<PaginatedProduct>(environment.apiUrl + '/products?page=' + page +'&ZipCode=' + zipCode)
+      .pipe(
+        map((data) => {
+          const paginatedProduct: PaginatedProduct = {
+            items: data['hydra:member'] as Product[],
+            total: data['hydra:totalItems'],
+            page,
+          };
+          return paginatedProduct;
+
+        })
+      );
+  }
+
+
+
 
   regions= [
     "Auvergne-Rhône-Alpes",

@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   template: `
 
 
- <nav class="navbar navbar-expand-lg navbar-light   fixed-top  bg-light ">
+ <nav class="navbar navbar-expand-lg navbar-light navbarcc   fixed-top   ">
   <a class="navbar-brand" routerLink="/">La courgette</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@ import {Router} from "@angular/router";
       <ng-container *ngIf="!isAuthenticated">
         <li class="nav-item">
           <a
-            class="nav-link"
+            class="nav-link m-1"
             routerLink="/register"
             routerLinkActive="active"
           >Inscription
@@ -41,19 +41,20 @@ import {Router} from "@angular/router";
         </li>
         <li class="nav-item">
           <a
-            class="btn btn-primary"
+            class="btn btn-primary m-1"
             routerLink="/login"
             routerLinkActive="active"
-          >
+          ><i class="fas fa-sign-in-alt"></i>
             Connexion</a
           >
         </li>
       </ng-container>
       <li class="nav-item" *ngIf="isAuthenticated">
-        <button class="btn btn-warning" (click)="handleLogout()">
+        <button class="btn btn-warning m-1" (click)="handleLogout()">
+          <i class="fas fa-sign-out-alt"></i>
           Deconnexion
         </button>
-        <a class="btn btn-success" routerLink="/profile" routerLinkActive="active">Mon espace perso</a>
+        <a class="btn btn-success" routerLink="/profile" routerLinkActive="active"> <i class="fas fa-user-alt"></i> Mon espace perso</a>
       </li>
 
     </ul>
@@ -64,6 +65,14 @@ import {Router} from "@angular/router";
   `,
   styles: [
     `
+
+      .navbarcc{
+        background-color: #4c8956;
+      }
+
+      .navbar-brand{
+        font-family: 'Galada', cursive;
+      }
 
     `
   ]

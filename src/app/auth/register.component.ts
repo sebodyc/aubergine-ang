@@ -8,6 +8,8 @@ import {UserService} from "./user.service";
 @Component({
   selector: 'app-register',
   template: `
+    <div class="backpics">
+    <div class="container-fluid cont texthome">
     <h1>Inscription</h1>
     <div class="alert alert-info" *ngIf="loading">en cour chargement ...</div>
     <div class="alert alert-danger" *ngIf="error">
@@ -92,9 +94,34 @@ import {UserService} from "./user.service";
 
       <button class="btn btn-success">Je m'inscris</button>
     </form>
+    </div>
+    </div>
 
   `,
   styles: [
+    `
+      .cont {
+        padding: 3rem 5rem 3rem;
+      }
+
+      .backpics {
+        background-image: url("../../assets/images/a.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        margin: auto;
+        font-size: 1.2rem;
+        padding: 1rem;
+      }
+
+      .texthome {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: black;
+        margin: 3rem auto;
+
+        padding: 2rem 2rem;
+      }
+    `
   ]
 })
 export class RegisterComponent implements OnInit {
